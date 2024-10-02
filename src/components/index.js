@@ -1,0 +1,6 @@
+export * from './HomePageComponents/Navbar'
+export * from './HomePageComponents/Hero'
+export * from './HomePageComponents/HomeGiftCategories'
+export * from './HomePageComponents/SignificadoAtlas'
+export * from './HomePageComponents/Invitacion'
+export * from './HomePageComponents/Footer'
