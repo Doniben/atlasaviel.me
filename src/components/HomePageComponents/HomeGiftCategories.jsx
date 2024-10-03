@@ -1,3 +1,6 @@
+
+import './HomeGiftCategories.css'; // Estilos personalizados
+
 const categories = [
   {
     icon: "flaticon-050-fence",
@@ -46,7 +49,6 @@ const categories = [
   },
 ];
 
-
 export const HomeGiftCategories = () => {
   return (
     <div className="container-fluid pt-5">
@@ -60,13 +62,8 @@ export const HomeGiftCategories = () => {
         <div className="row">
           {categories.map((category, index) => (
             <div className="col-lg-4 col-md-6 pb-1" key={index}>
-              <div
-                className="d-flex bg-light shadow-sm border-top rounded mb-4"
-                style={{ padding: '30px' }}
-              >
-                <i
-                  className={`${category.icon} h1 font-weight-normal text-primary mb-3`}
-                ></i>
+              <div className="category-card d-flex bg-light shadow-sm border-top rounded mb-4">
+                <i className={`${category.icon} h1 font-weight-normal text-primary mb-3`}></i>
                 <div className="pl-4">
                   <h4>{category.title}</h4>
                   <p className="m-0">{category.description}</p>

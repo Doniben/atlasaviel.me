@@ -1,0 +1,27 @@
+.category-card {
+  padding: 30px;
+  display: flex;
+  align-items: flex-start;
+  min-height: 100px;
+  height: 90%;
+}
+
+.category-card i {
+  font-size: 3rem;
+  margin-right: 15px;
+}
+
+.category-card h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.category-card p {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .category-card {
+    min-height: 100px;
+  }
+}

@@ -1,6 +1,27 @@
-import invitacion from '../../assets/img/invitacion.png'
+import { useState } from 'react';
+import invitacion from '../../assets/img/invitacion.png';
 
 export const Invitacion = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    giftCategory: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aquí puedes manejar el envío del formulario
+    console.log('Formulario enviado:', formData);
+  };
+
   return (
     <div className="container-fluid py-5">
       <div className="container">
@@ -17,13 +38,16 @@ export const Invitacion = () => {
                 <h1 className="text-white m-0">Confirma tu asistencia</h1>
               </div>
               <div className="card-body rounded-bottom bg-primary p-5">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <input
                       type="text"
                       className="form-control border-0 p-4"
                       placeholder="Tu nombre"
-                      required="required"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div className="form-group">
@@ -31,24 +55,31 @@ export const Invitacion = () => {
                       type="email"
                       className="form-control border-0 p-4"
                       placeholder="Tu correo"
-                      required="required"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div className="form-group">
                     <select
                       className="custom-select border-0 px-4"
-                      style={{height: '47px'}}
+                      style={{ height: '47px' }}
+                      name="giftCategory"
+                      value={formData.giftCategory}
+                      onChange={handleChange}
+                      required
                     >
-                      <option selected>Selecciona una categoría de regalo</option>
-                      <option value="1">Pañales y cuidado del bebé</option>
-                      <option value="2">Mobiliario y decoración</option>
-                      <option value="3">Alimentación</option>
-                      <option value="4">Juguetes y entretenimiento</option>
-                      <option value="5">Seguridad</option>
-                      <option value="6">Ropa y accesorios</option>
-                      <option value="7">Baño</option>
-                      <option value="8">Transporte y paseo</option>
-                      <option value="9">Otros</option>
+                      <option value="">Selecciona una categoría de regalo</option>
+                      <option value="Pañales y cuidado del bebé">Pañales y cuidado del bebé</option>
+                      <option value="Mobiliario y decoración">Mobiliario y decoración</option>
+                      <option value="Alimentación">Alimentación</option>
+                      <option value="Juguetes y entretenimiento">Juguetes y entretenimiento</option>
+                      <option value="Seguridad">Seguridad</option>
+                      <option value="Ropa y accesorios">Ropa y accesorios</option>
+                      <option value="Baño">Baño</option>
+                      <option value="Transporte y paseo">Transporte y paseo</option>
+                      <option value="Otros">Otros</option>
                     </select>
                   </div>
                   <div>
@@ -63,11 +94,12 @@ export const Invitacion = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-5 mb-lg-0">
-            <img className='img-fluid rounded mb-5 mb-lg-0' src={invitacion} alt="" />
+          <div className="col-lg-6">
+            <img className="img-fluid rounded mb-5 mb-lg-0" src={invitacion} alt="Invitación Baby Shower" />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+

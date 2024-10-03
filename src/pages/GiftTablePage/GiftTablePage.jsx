@@ -1,5 +1,12 @@
+import { Categories, Footer, Navbar, Products } from "../../components"
+
 export const GiftTablePage = () => {
   return (
-    <div>GiftTablePage</div>
+    <div>
+      <Navbar />
+      <Categories />
+      <Products />
+      <Footer />
+    </div>
   )
 }
