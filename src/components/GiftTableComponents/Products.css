@@ -1,22 +1,104 @@
+/* Estilos generales para las tarjetas de productos */
+.product-item {
+  height: auto; /* Por defecto, las tarjetas son dinámicas */
+}
+
+/* Altura fija para la imagen en las tarjetas de productos */
+.product-img {
+  height: 18rem; /* Fija la altura del contenedor de la imagen */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra verticalmente la imagen */
+  overflow: hidden;
+}
+
+.product-img-fixed {
+  height: 100%; /* Mantiene la altura completa de la imagen */
+  object-fit: contain; /* Muestra la imagen completa sin distorsionarla */
+  width: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Hover en la tarjeta del producto */
 .product-hover {
   transition: transform 0.3s ease, opacity 0.3s ease;
   position: relative;
 }
 
 .product-hover:hover {
-  transform: scale(1.05);
-  opacity: 0.8;
+  transform: scale(1.05); /* Agranda la tarjeta ligeramente al hacer hover */
+  opacity: 0.6; /* Aumenta la opacidad para destacar los íconos */
 }
 
+/* Ocultar íconos por defecto */
 .product-action {
-  display: none; /* Esconde los íconos por defecto */
+  display: none;
 }
 
+/* Mostrar íconos al hacer hover y centrarlos */
 .product-hover:hover .product-action {
-  display: flex; /* Muestra los íconos al hacer hover */
-  position: absolute; /* Posiciona los íconos sobre la imagen */
+  display: flex;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   gap: 5px;
 }
+
+.category-img {
+  height: 100%; /* Mantiene la altura del contenedor */
+  width: 100%; /* Mantiene la anchura del contenedor */
+  object-fit: contain; /* Asegura que la imagen esté completamente visible sin distorsionarse */
+  object-position: center; /* Centra la imagen dentro del contenedor */
+  border-radius: 10%; /* Si deseas un borde redondeado */
+}
+
+
+/* Filtros: Alinear a la derecha en desktop, ancho completo en móvil */
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.filter-select {
+  width: 20% !important;
+}
+
+/* Hacer que el filtro ocupe todo el ancho en dispositivos móviles */
+@media (max-width: 768px) {
+  .filter-select {
+    width: 100%;
+  }
+}
+
+/* Fijar un alto consistente para la sección de detalles */
+.product-details {
+  height: 150px; /* Altura fija para los detalles */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Asegura que el contenido esté alineado */
+}
+
+/* Altura fija para las tarjetas de productos en desktop */
+@media (min-width: 768px) {
+  .product-item {
+    height: 450px; 
+  }
+}
+
+/* Evitar duplicación de estilos de hover */
+.product-hover:hover {
+  transform: scale(1.05); 
+  opacity: 0.6; 
+}
+
+.product-hover:hover .product-action {
+  display: flex; /* Mostrar íconos al hacer hover */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 5px;
+}
+
+

@@ -1,5 +1,5 @@
-
 import './HomeGiftCategories.css'; // Estilos personalizados
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate para redirigir
 
 const categories = [
   {
@@ -9,7 +9,7 @@ const categories = [
   },
   {
     icon: "flaticon-022-drum",
-    title: "Pañales y cuidado del bebé",
+    title: "Pañales y Cuidado del Bebé",
     description: "Pañales, cremas para el cambio, toallitas húmedas, talco, shampoo suave..."
   },
   {
@@ -50,6 +50,13 @@ const categories = [
 ];
 
 export const HomeGiftCategories = () => {
+  const navigate = useNavigate(); // Hook para redirigir al usuario
+
+  const handleCategoryClick = (categoryTitle) => {
+    // Redirige a /babyshower y pasa la categoría seleccionada como un parámetro de URL
+    navigate(`/babyshower?category=${categoryTitle}`);
+  };
+
   return (
     <div className="container-fluid pt-5">
       <div className="text-center pb-2">
@@ -61,8 +68,15 @@ export const HomeGiftCategories = () => {
       <div className="container pb-3">
         <div className="row">
           {categories.map((category, index) => (
-            <div className="col-lg-4 col-md-6 pb-1" key={index}>
-              <div className="category-card d-flex bg-light shadow-sm border-top rounded mb-4">
+            <div
+              className="col-lg-4 col-md-6 pb-1" 
+              key={index}
+            >
+              <div
+                className="category-card d-flex bg-light shadow-sm border-top rounded mb-4"
+                onClick={() => handleCategoryClick(category.title)} // Llama a la función cuando se hace clic
+                style={{ cursor: 'pointer' }}
+              >
                 <i className={`${category.icon} h1 font-weight-normal text-primary mb-3`}></i>
                 <div className="pl-4">
                   <h4>{category.title}</h4>
@@ -76,4 +90,5 @@ export const HomeGiftCategories = () => {
     </div>
   );
 };
+
 
