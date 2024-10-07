@@ -1,39 +1,24 @@
-
-
-const categories = [
-  {
-    image: 'path-to-image-1.jpg',
-    name: 'Pañales y cuidado del bebé',
-    productsCount: 120
-  },
-  {
-    image: 'path-to-image-2.jpg',
-    name: 'Mobiliario y decoración',
-    productsCount: 80
-  },
-  {
-    image: 'path-to-image-3.jpg',
-    name: 'Alimentación',
-    productsCount: 60
-  },
-  {
-    image: 'path-to-image-4.jpg',
-    name: 'Juguetes y entretenimiento',
-    productsCount: 150
-  },
-  {
-    image: 'path-to-image-5.jpg',
-    name: 'Seguridad',
-    productsCount: 50
-  },
-  {
-    image: 'path-to-image-6.jpg',
-    name: 'Ropa y accesorios',
-    productsCount: 100
-  },
-];
+import { useEffect, useState } from 'react';
 
 export const Categories = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    // Llamar al endpoint para obtener las categorías con el número de productos
+    fetch('https://2ylegiy3g3.execute-api.us-east-1.amazonaws.com/dev/categories')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Fetched data:', data); 
+        if (data.Result === 'success') { 
+          console.log('Categories retrieved successfully:', data.value); 
+          setCategories(data.value); 
+        } else {
+          console.error('Failed to fetch categories:', data.message); 
+        }
+      })
+      .catch((error) => console.error('Error fetching categories:', error));
+  }, []);
+
   return (
     <div className="container-fluid pt-5">
       <div className="text-center pb-2">
@@ -45,11 +30,11 @@ export const Categories = () => {
             <div className="col-lg-4 col-md-6 pb-1" key={index}>
               <div className="category-card d-flex bg-light shadow-sm border-top rounded mb-4">
                 <div className="overflow-hidden" style={{ width: '100px', height: '100px' }}>
-                  <img className="img-fluid" src={category.image} alt={category.name} />
+                  <img className="img-fluid" src={category.img} alt={category.name} />
                 </div>
                 <div className="pl-4 d-flex flex-column justify-content-center">
                   <h4>{category.name}</h4>
-                  <small className="text-body">{category.productsCount} Productos</small>
+                  <small className="text-body">{category.count} Productos</small>
                 </div>
               </div>
             </div>
@@ -59,5 +44,7 @@ export const Categories = () => {
     </div>
   );
 };
+
+
 
 
