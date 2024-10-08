@@ -9,7 +9,7 @@ const categories = [
   },
   {
     icon: "flaticon-022-drum",
-    title: "Pañales y Cuidado del Bebé",
+    title: "Pañales y cuidado del Bebé",
     description: "Pañales, cremas para el cambio, toallitas húmedas, talco, shampoo suave..."
   },
   {
@@ -24,7 +24,7 @@ const categories = [
   },
   {
     icon: "flaticon-025-sandwich",
-    title: "Juguetes y entretenimiento",
+    title: "Juguetes y Entretenimiento",
     description: "Sonajeros, peluches, libros interactivos, juguetes de madera..."
   },
   {
@@ -39,7 +39,7 @@ const categories = [
   },
   {
     icon: "flaticon-017-toy-car",
-    title: "Transporte y paseo",
+    title: "Transporte y Paseo",
     description: "Coches, portabebés, sillas para auto, cobijas de paseo, mochilas ergonómicas..."
   },
   {
