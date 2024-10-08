@@ -1,0 +1,77 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  z-index: 1000;
+  display: none; /* Oculto por defecto */
+}
+
+.modal.fixed-height-modal {
+  height: 400px; /* Altura fija para todos los steps */
+}
+
+.modal.show {
+  display: block; /* Mostrar el modal cuando showModal es true */
+}
+
+.modal-content-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-product-info {
+  flex: 1;
+}
+
+.modal-product-img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-details {
+  margin-bottom: 20px;
+}
+
+.modal-action {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.radio-options {
+  margin-bottom: 20px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quantity-selector button {
+  margin-left: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.custom-steps .ant-steps-item-process .ant-steps-item-icon {
+  background-color: #00394F !important; /* Cambia el fondo del número en el paso activo */
+  border-color: #00394F !important; /* Cambia el borde del número en el paso activo */
+}
+
+.custom-steps .ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon {
+  color: white; /* Cambia el color del número en el paso activo */
+}
+
