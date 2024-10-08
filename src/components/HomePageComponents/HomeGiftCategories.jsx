@@ -9,7 +9,7 @@ const categories = [
   },
   {
     icon: "flaticon-022-drum",
-    title: "Pañales y cuidado del Bebé",
+    title: "Pañales y cuidado del bebé",
     description: "Pañales, cremas para el cambio, toallitas húmedas, talco, shampoo suave..."
   },
   {
