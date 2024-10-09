@@ -17,7 +17,7 @@ export const SignificadoAtlas = () => {
             <p className="section-title pr-5">
               <span className="pr-2">¿Por qué Atlas Aviel?</span>
             </p>
-            <h1 className="mb-4">Un nombre con fuerza y un corazón lleno de fe</h1>
+            <h1 className="mb-4">Un nombre con fuerza, un corazón lleno de fe</h1>
             <p>
               <strong>Atlas</strong> no solo es el titán de la mitología griega que sostuvo el cielo sobre
               sus hombros, también es un símbolo de fortaleza y resistencia. Queremos que nuestro pequeño Atlas
