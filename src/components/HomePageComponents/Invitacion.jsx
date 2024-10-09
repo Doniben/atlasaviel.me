@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import invitacion from '../../assets/img/invitacion.png';
+import invitacion from '../../assets/img/bebfesto.jpeg';
 
 export const Invitacion = () => {
   const [formData, setFormData] = useState({
