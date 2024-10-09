@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import invitacion from '../../assets/img/bebfesto.jpeg';
+import { GuestContext } from '../../context/GuestContext';
+import { useNavigate } from 'react-router-dom'; // Usa el hook `useNavigate`
 
 export const Invitacion = () => {
+  const { setGuestData } = useContext(GuestContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     giftCategory: '',
   });
+
+  // Instancia el hook `useNavigate`
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,12 +24,19 @@ export const Invitacion = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes manejar el envío del formulario
-    console.log('Formulario enviado:', formData);
+
+    // Actualiza el contexto con los datos del invitado
+    setGuestData({
+      name: formData.name,
+      email: formData.email,
+    });
+
+    // Redirige usando el hook `navigate`
+    navigate(`/babyshower?category=${encodeURIComponent(formData.giftCategory)}`);
   };
 
   return (
-    <div className="container-fluid py-5">
+    <div id="invitacion" className="container-fluid py-5">
       <div className="container">
         <div className="text-center pb-2">
           <p className="section-title px-5">

@@ -24,13 +24,13 @@
 
 /* Hover en la tarjeta del producto */
 .product-hover {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease;
   position: relative;
 }
 
+/* Agranda la tarjeta y reduce la opacidad solo de la imagen y detalles */
 .product-hover:hover {
   transform: scale(1.05); /* Agranda la tarjeta ligeramente al hacer hover */
-  opacity: 0.6; /* Aumenta la opacidad para destacar los íconos */
 }
 
 /* Ocultar íconos por defecto */
@@ -48,6 +48,42 @@
   gap: 5px;
 }
 
+/* Mantener el color original del botón y sin opacidad */
+.product-action button {
+  opacity: 1 !important; /* El botón mantiene su color original en hover */
+  background-color: #17a2b8 !important;
+  color: white !important;
+}
+
+/* Asegurarse que el botón mantenga su opacidad al hacer hover */
+.product-hover:hover .product-action button {
+  opacity: 1 !important; /* El botón no se ve afectado por la opacidad */
+  background-color: #17a2b8 !important; /* Color original del botón */
+  color: white !important; /* Color de texto original */
+}
+
+/* Opacidad reducida en la imagen y detalles, pero NO afecta el botón */
+.product-hover:hover .product-img,
+.product-hover:hover .product-details {
+  opacity: 0.9; /* Solo la imagen y los detalles serán opacos */
+}
+
+/* Clase para productos sin stock */
+.product-out-of-stock {
+  filter: grayscale(100%); /* Blanco y negro */
+}
+
+/* Estilos del botón en productos sin stock */
+.product-out-of-stock .product-action button {
+  background-color: white !important; /* Fondo blanco */
+  color: #00394f !important; /* Texto azul */
+  cursor: not-allowed; /* Cursor deshabilitado */
+}
+
+.product-out-of-stock .product-action button::before {
+  content: "Reservado"; /* Texto "Reservado" */
+}
+
 .category-img {
   height: 100%; /* Mantiene la altura del contenedor */
   width: 100%; /* Mantiene la anchura del contenedor */
@@ -55,7 +91,6 @@
   object-position: center; /* Centra la imagen dentro del contenedor */
   border-radius: 10%; /* Si deseas un borde redondeado */
 }
-
 
 /* Filtros: Alinear a la derecha en desktop, ancho completo en móvil */
 .filter-container {
@@ -95,21 +130,7 @@
   }
 }
 
-/* Evitar duplicación de estilos de hover */
-.product-hover:hover {
-  transform: scale(1.05); 
-  opacity: 0.6; 
-}
-
-.product-hover:hover .product-action {
-  display: flex; /* Mostrar íconos al hacer hover */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  gap: 5px;
-}
-
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -130,5 +151,6 @@
   max-width: 500px;
   width: 100%;
 }
+
 
 

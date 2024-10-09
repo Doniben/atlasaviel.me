@@ -85,16 +85,20 @@ export const Products = ({ selectedCategory }) => {
         <div className="row px-xl-5">
           {filteredProducts.length > 0 ? (
             filteredProducts.map(product => (
-              <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div className="product-item bg-light mb-4 product-hover">
+              <div 
+                key={product.id} 
+                className={`col-lg-3 col-md-4 col-sm-6 pb-1 ${product.stock === 0 ? 'product-out-of-stock' : ''}`}
+              >
+                <div className={`product-item bg-light mb-4 product-hover`}>
                   <div className="product-img position-relative overflow-hidden">
                     <img className="img-fluid product-img-fixed" src={product.imgSrc} alt={product.name} />
                     <div className="product-action">
                       <button 
-                        className="btn btn-outline-dark btn-square" 
-                        onClick={() => openAssignmentModal(product)}
+                        className="btn btn-outline-dark btn-square"
+                        disabled={product.stock === 0} // Deshabilitar si no hay stock
+                        onClick={() => product.stock > 0 && openAssignmentModal(product)}
                       >
-                        Regalar!
+                        {product.stock > 0 ? 'Regalar!' : ''}
                       </button>
                     </div>
                   </div>
@@ -113,6 +117,7 @@ export const Products = ({ selectedCategory }) => {
           ) : (
             <p>No hay productos disponibles para esta categoría.</p>
           )}
+
         </div>
       )}
 

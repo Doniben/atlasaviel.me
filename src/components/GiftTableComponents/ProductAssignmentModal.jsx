@@ -1,14 +1,24 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Modal, Steps, Button, Form, Input, message, Row, Col, InputNumber } from 'antd';
+import { GuestContext } from '../../context/GuestContext';
 import './ProductAssignmentModal.css';
 
 const { Step } = Steps;
 
 export const ProductAssignmentModal = ({ product, visible, closeModal }) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const { guestData } = useContext(GuestContext);
   const [form] = Form.useForm();
   const [buyOption, setBuyOption] = useState('');
+
+  useEffect(() => {
+    // Autocompletar el formulario con los datos del invitado
+    form.setFieldsValue({
+      name: guestData.name,
+      email: guestData.email,
+    });
+  }, [guestData, form]);
 
   const nextStep = () => setCurrentStep(currentStep + 1);
   const prevStep = () => setCurrentStep(currentStep - 1);

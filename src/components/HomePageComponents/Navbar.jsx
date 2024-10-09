@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Navbar = () => {
+export const Navbar = ({ onConfirmarAsistencia, onSignificadoClick }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleNavbar = () => {
@@ -30,12 +31,19 @@ export const Navbar = () => {
           className={`collapse navbar-collapse justify-content-between ${isCollapsed ? '' : 'show'}`}
         >
           <div className="navbar-nav font-weight-bold mx-auto py-0">
-            <Link to="/about" className="nav-item nav-link">Significado</Link>
+          <Link to="#" className="nav-item nav-link" onClick={onSignificadoClick}>
+              Significado
+            </Link>
             <Link to="/gallery" className="nav-item nav-link">Galería</Link>
             <Link to="/babyshower" className="nav-item nav-link">Babyshower</Link>
             <Link to="/contact" className="nav-item nav-link">Contacto</Link>
           </div>
-          <Link to="/rsvp" className="btn btn-primary px-4">Confirmar asistencia</Link>
+          <button 
+            className="btn btn-primary px-4" 
+            onClick={onConfirmarAsistencia}
+          >
+            Confirmar asistencia
+          </button>
         </div>
       </nav>
     </div>
