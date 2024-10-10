@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from 'react';
-import { Modal, Steps, Button, Form, Input, message, Row, Col, InputNumber } from 'antd';
+import { Modal, Steps, Button, Form, Input, message, Row, Col, InputNumber, Spin } from 'antd'; // Importar Spin
 import { GuestContext } from '../../context/GuestContext';
 import './ProductAssignmentModal.css';
 
@@ -11,6 +11,7 @@ export const ProductAssignmentModal = ({ product, visible, closeModal }) => {
   const { guestData } = useContext(GuestContext);
   const [form] = Form.useForm();
   const [buyOption, setBuyOption] = useState('');
+  const [loading, setLoading] = useState(false); // Estado de carga
 
   useEffect(() => {
     // Autocompletar el formulario con los datos del invitado
@@ -25,6 +26,7 @@ export const ProductAssignmentModal = ({ product, visible, closeModal }) => {
 
   const handleConfirmGift = () => {
     form.validateFields().then(values => {
+      setLoading(true); // Iniciar el spinner
       fetch('https://2ylegiy3g3.execute-api.us-east-1.amazonaws.com/dev/assignProducts', {
         method: 'POST',
         headers: {
@@ -39,15 +41,19 @@ export const ProductAssignmentModal = ({ product, visible, closeModal }) => {
       })
       .then(response => response.json())
       .then(data => {
+        setLoading(false); // Detener el spinner
         console.log("data from /assignProducts: ", data)
         if (data.Result === 'success') {
-          message.success("¡Regalo asignado exitosamente!");
+          message.success("¡Regalo asignado exitosamente! 🥰");
           setCurrentStep(3);
         } else {
-          message.error('Error al asignar el producto');
+          message.error('Error al asignar el regalo');
         }
       })
-      .catch(error => message.error('Error en el servidor: ' + error.message));
+      .catch(error => {
+        setLoading(false); // Detener el spinner en caso de error
+        message.error('Error en el servidor: ' + error.message);
+      });
     });
   };
 
@@ -67,19 +73,19 @@ export const ProductAssignmentModal = ({ product, visible, closeModal }) => {
       </Steps>
 
       {currentStep === 0 && (
-              <div className="modal-content-step mt-4">
-                <div className="modal-product-info text-center">
-                  <img src={product.imgSrc} alt={product.name} className="modal-product-img" />
-                  <div className="product-details mt-4">
-                    <h3>{product.name}</h3>
-                    <p>(Precio estimado: ${product.price.toFixed(2)})</p>
-                    <p>Categoría: {product.category}</p>
-                  <button className="btn btn-primary text-center" onClick={nextStep}>
-                    Sí, quiero regalarle {product.name} al <strong>Bebé Atlas</strong>
-                  </button>
-                  </div>
-                </div>
-              </div>
+        <div className="modal-content-step mt-4">
+          <div className="modal-product-info text-center">
+            <img src={product.imgSrc} alt={product.name} className="modal-product-img" />
+            <div className="product-details mt-4">
+              <h3>{product.name}</h3>
+              <p>(Precio estimado: ${product.price.toFixed(2)})</p>
+              <p>Categoría: {product.category}</p>
+              <button className="btn btn-primary text-center" onClick={nextStep}>
+                Sí, quiero regalarle {product.name} al <strong>Bebé Atlas</strong>
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {currentStep === 1 && (
@@ -173,37 +179,40 @@ export const ProductAssignmentModal = ({ product, visible, closeModal }) => {
           <div style={{ display: 'flex', justifyContent: 'flex-start', gap: '10px' }}>
             <Button
               type="primary"
-              style={{ backgroundColor: '#17a2b8', borderColor: '#17a2b8' }} // Color de fondo del botón
+              style={{ backgroundColor: '#17a2b8', borderColor: '#17a2b8' }}
               onClick={handleConfirmGift}
+              loading={loading} // Mostrar spinner
+              disabled={loading} // Deshabilitar botón mientras carga
             >
-              Confirmar regalo
+              {loading ? <Spin/> : 'Confirmar regalo'}
             </Button>
-            <Button onClick={prevStep}>Atrás</Button>
+            <Button onClick={prevStep} disabled={loading}>Atrás</Button>
           </div>
         </Form>
       )}
 
       {currentStep === 3 && (
         <div className='mt-4 text-center'>
-        <h3>¡Gracias por tu regalo!</h3>
-        <p>Nos vemos el 20 de Octubre</p>
-      
-        {/* Validación para el enlace de Amazon */}
-        {buyOption == 'amazon' ? (
-          <div>
-            <p>Puedes pedir tu producto en este link</p>
-            <a href={product.link} target="_blank" rel="noopener noreferrer">
-              <Button type="primary">Comprar en Amazon</Button>
-            </a>
-          </div>
-        ) : (
-          <Button type="primary" onClick={closeModal}>Cerrar</Button>
-        )}
-      </div>
+          <h3>¡Gracias por tu regalo!</h3>
+          <p>Nos vemos el 20 de Octubre</p>
+
+          {/* Validación para el enlace de Amazon */}
+          {buyOption === 'amazon' ? (
+            <div>
+              <p>Puedes pedir tu producto en este link</p>
+              <a href={product.link} target="_blank" rel="noopener noreferrer">
+                <Button type="primary">Comprar en Amazon</Button>
+              </a>
+            </div>
+          ) : (
+            <Button type="primary" onClick={closeModal}>Cerrar</Button>
+          )}
+        </div>
       )}
     </Modal>
   );
 };
+
 
 
 

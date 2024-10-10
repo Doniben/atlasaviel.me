@@ -108,7 +108,7 @@ export const Products = ({ selectedCategory }) => {
                       <h5>${product.price.toFixed(2)}</h5>
                     </div>
                     <div className="d-flex align-items-center justify-content-center mb-1">
-                      <small>Stock disponible: {product.stock}</small>
+                      <small>disponible(s): {product.stock}</small>
                     </div>
                   </div>
                 </div>
