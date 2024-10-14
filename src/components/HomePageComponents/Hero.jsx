@@ -1,5 +1,4 @@
 
-import heroImg from '../../assets/img/hero-foto-3.png';
 import './Hero.css'; // Si decides usar estilos personalizados
 
 export const Hero = () => {
@@ -13,7 +12,7 @@ export const Hero = () => {
           </h1>
         </div>
         <div className="col-lg-6 text-center text-lg-right">
-          <img className="img-fluid mt-5" src={heroImg} alt="Bebé en camino" />
+          <img className="img-fluid w-75 mr-5" src="https://i.ibb.co/7yjPCyg/3.png" alt="Bebé en camino" />
         </div>
       </div>
     </section>
