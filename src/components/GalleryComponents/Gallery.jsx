@@ -19,7 +19,7 @@ export const Gallery = () => {
       <div className="container">
         <div className="text-center pb-2">
           <p className="section-title px-5">
-            <span className="px-2">Our GTodasery</span>
+            <span className="px-2">Our Gallery</span>
           </p>
           <h1 className="mb-4">Memorias que nos acompañarán siempre</h1>
         </div>
