@@ -213,5 +213,20 @@
     "id": 43,
     "category": "Mis papás",
     "src": "https://i.ibb.co/jgsrqyn/Foto-7.jpg"
+  },
+  {
+    "id": 44,
+    "category": "Mis ecografías",
+    "src": "https://i.ibb.co/qYgyb7H/Foto-1.jpg"
+  },
+  {
+      "id": 45,
+      "category": "Mis ecografías",
+      "src": "https://i.ibb.co/2cM80qf/Foto-2.jpg"
+  },
+  {
+      "id": 46,
+      "category": "Mis ecografías",
+      "src": "https://i.ibb.co/m4FPM47/Foto-3.jpg"
   }
 ]
