@@ -44,9 +44,9 @@ export const Gallery = () => {
               </li>
               <li
                 className={`btn btn-outline-primary m-1 ${
-                  activeFilter === "Drawing" ? "active" : ""
+                  activeFilter === "Mis ecografías" ? "active" : ""
                 }`}
-                onClick={() => handleFilterChange("Drawing")}
+                onClick={() => handleFilterChange("Mis ecografías")}
               >
                 Mis ecografías
               </li>

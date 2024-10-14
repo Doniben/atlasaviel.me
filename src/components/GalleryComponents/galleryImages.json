@@ -216,17 +216,32 @@
   },
   {
     "id": 44,
-    "category": "Mis ecografías",
+    "category": "Mis papás",
     "src": "https://i.ibb.co/qYgyb7H/Foto-1.jpg"
   },
   {
-      "id": 45,
-      "category": "Mis ecografías",
-      "src": "https://i.ibb.co/2cM80qf/Foto-2.jpg"
+    "id": 45,
+    "category": "Mis papás",
+    "src": "https://i.ibb.co/2cM80qf/Foto-2.jpg"
   },
   {
-      "id": 46,
-      "category": "Mis ecografías",
-      "src": "https://i.ibb.co/m4FPM47/Foto-3.jpg"
+    "id": 46,
+    "category": "Mis papás",
+    "src": "https://i.ibb.co/m4FPM47/Foto-3.jpg"
+  },
+  {
+    "id": 47,
+    "category": "Mis ecografías",
+    "src": "https://i.ibb.co/vvK24W3/IMG-0227.jpg"
+  },
+  {
+    "id": 48,
+    "category": "Mis ecografías",
+    "src": "https://i.ibb.co/pLTLZh3/IMG-0228.jpg"
+  },
+  {
+    "id": 49,
+    "category": "Mis ecografías",
+    "src": "https://i.ibb.co/ggZzY6p/IMG-0229.jpg"
   }
 ]
